@@ -5,7 +5,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
 ALLOWED_HOSTS = ['*']
 
@@ -94,8 +95,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-DEFAULT_FROM_EMAIL = 'Dental@gmail.com'
-NOTIFY_EMAIL = 'odontologo@gmail.com'
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+NOTIFY_EMAIL = config('NOTIFY_EMAIL')
 
 if DEBUG is False:
     SESSION_COOKIE_SECURE = True
