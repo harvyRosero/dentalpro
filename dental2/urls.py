@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
     path('citas/', views.CitasView.as_view(), name='citas'),
     path('blog/', include('blog.urls' ), name="blog"),
+    path('services/', views.ServicesView.as_view(), name="services"  )
 ]
 
 if settings.DEBUG:

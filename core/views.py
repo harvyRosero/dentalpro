@@ -1,3 +1,4 @@
+from re import template
 from django.shortcuts import render
 from django.views import generic
 from .forms import CitasForm
@@ -8,6 +9,9 @@ from django.conf import settings
 
 class HomeView(generic.TemplateView):
     template_name = 'index.html'
+    
+class ServicesView(generic.TemplateView):
+    template_name = 'services.html'
     
 class CitasView(generic.FormView):
     form_class = CitasForm

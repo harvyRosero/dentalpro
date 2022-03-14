@@ -11,6 +11,7 @@ class Category(models.Model):
 
 
 class Post(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     resumen = models.CharField(max_length=500)
@@ -24,7 +25,7 @@ class Post(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('blog:post-detail', kwargs={'slug': self.slug})
+        return reverse('post-detail', kwargs={'slug': self.slug})
     
 
 def pre_save_product_receiver(sender, instance, *args, **kwargs):
